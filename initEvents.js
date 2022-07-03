@@ -40,16 +40,7 @@ function onLoginSubmit(e) {
 
     authService.logon(email, password)
         .then(data => {
-            if (data.error) {
-                let message = data.error.message;
-
-                handlebarId = "login-form-template";
-                notificationBuilder.errorAction(templateData, message, handlebarId);
-
-                return setTimeout(() => {
-                    navigate("login");
-                }, 1000);
-            }
+           
             localStorage.setItem("auth", JSON.stringify(data));
             let message = "Login successful.";
             notificationBuilder.seccessAction(templateData, message);
